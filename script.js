@@ -66,6 +66,9 @@ function updateButtons() {
     darkness = 0;
     updateEventListeners('shadow');
   });
+
+  const clearButton = document.querySelector('.clear-btn');
+  clearButton.addEventListener('click', clearGrid);
 }
 
 //fix this- let user press Cancel to exit out of prompt
@@ -75,4 +78,11 @@ function updateGridSize() {
     newSize = parseInt(prompt('Enter a number between 1 and 100', 5));
   }
   createGrid(newSize);
+}
+
+function clearGrid(){
+  const gridItem = document.querySelectorAll('.grid-item');
+  gridItem.forEach(gridItem =>{
+    gridItem.style.backgroundColor = 'white';
+  })
 }
