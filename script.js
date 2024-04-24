@@ -14,6 +14,7 @@ function createGrid(n) {
     gridContainer.appendChild(gridItem);
   }
   updateEventListeners('default');
+  updateButtons();
 }
 
 function updateEventListeners(mode = 'default') {
@@ -26,18 +27,18 @@ function updateEventListeners(mode = 'default') {
           grid.style.backgroundColor = 'black';
           break;
         case 'rainbow':
-          grid.style.backgroundColor = 
-            `rgb(${Math.floor(Math.random()*255)},
-                ${Math.floor(Math.random()*255)},
-                ${Math.floor(Math.random()*255)})`
+          grid.style.backgroundColor =
+            `rgb(${Math.floor(Math.random() * 255)},
+                ${Math.floor(Math.random() * 255)},
+                ${Math.floor(Math.random() * 255)})`
           break;
         case 'erase':
           grid.style.backgroundColor = 'white';
           break;
         case 'shadow':
           grid.style.backgroundColor = `rgba(0,0,0, ${darkness})`;
-          if(darkness < 1){
-            darkness+= 0.1;
+          if (darkness < 1) {
+            darkness += 0.1;
           }
           break;
       }
@@ -45,9 +46,27 @@ function updateEventListeners(mode = 'default') {
   });
 }
 
-const gridButton = document.querySelector('.grid-btn');
-gridButton.addEventListener('click', updateGridSize);
+let darkness = 0;
+function updateButtons() {
+  const gridButton = document.querySelector('.grid-btn');
+  gridButton.addEventListener('click', updateGridSize);
 
+  const rainbowButton = document.querySelector('.rainbow-btn');
+  rainbowButton.addEventListener('click', () => {
+    updateEventListeners('rainbow');
+  });
+
+  const eraseButton = document.querySelector('.erase-btn');
+  eraseButton.addEventListener('click', () => {
+    updateEventListeners('erase');
+  });
+
+  const shadowButton = document.querySelector('.shadow-btn');
+  shadowButton.addEventListener('click', () => {
+    darkness = 0;
+    updateEventListeners('shadow');
+  });
+}
 
 //fix this- let user press Cancel to exit out of prompt
 function updateGridSize() {
@@ -57,20 +76,3 @@ function updateGridSize() {
   }
   createGrid(newSize);
 }
-
-const rainbowButton = document.querySelector('.rainbow-btn');
-rainbowButton.addEventListener('click', () =>{
-  updateEventListeners('rainbow');
-});
-
-const eraseButton = document.querySelector('.erase-btn');
-eraseButton.addEventListener('click', () =>{
-  updateEventListeners('erase');
-});
-
-let darkness = 0
-const shadowButton = document.querySelector('.shadow-btn');
-shadowButton.addEventListener('click', () =>{
-  darkness = 0;
-  updateEventListeners('shadow');
-});
