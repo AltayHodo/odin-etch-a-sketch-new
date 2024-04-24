@@ -4,7 +4,47 @@
   box-sizing: border-box;
 }
 
+h1{
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.buttons-container{
+  display: flex;
+  flex-direction: column;
+}
+
 .grid-container{
   width: 500px;
   height: 500px;
+}
+
+button {
+  background-color: #757575; 
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #5a5a5a;
+}
+
+button:active, button:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
 }

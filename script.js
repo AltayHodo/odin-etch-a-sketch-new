@@ -5,12 +5,13 @@ window.addEventListener('load', () => {
 function createGrid(n) {
   const gridContainer = document.querySelector('.grid-container');
   gridContainer.innerHTML = '';
+  gridContainer.style.border = '1px solid'
   gridContainer.style.display = 'grid';
   gridContainer.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
   for (let i = 0; i < n * n; i++) {
     const gridItem = document.createElement('div');
     gridItem.classList.add('grid-item');
-    gridItem.style.border = '1px solid';
+    gridItem.style.border = '1px solid grey';
     gridContainer.appendChild(gridItem);
   }
   updateEventListeners('default');
