@@ -74,11 +74,16 @@ function updateButtons() {
 
 //fix this- let user press Cancel to exit out of prompt
 function updateGridSize() {
-  let newSize = parseInt(prompt('Size of grid', 5));
-  while (newSize > 100 || newSize < 1 || isNaN(newSize)) {
-    newSize = parseInt(prompt('Enter a number between 1 and 100', 5));
+  let input = prompt('Size of grid', 5);
+  let newSize = parseInt(input);
+
+  while (input !== null && (newSize > 100 || newSize < 1 || isNaN(newSize))) {
+    input = prompt('Enter a number between 1 and 100', 5);
+    newSize = parseInt(input);
   }
-  createGrid(newSize);
+  if (input !== null){
+    createGrid(newSize);
+  }
 }
 
 function clearGrid(){
